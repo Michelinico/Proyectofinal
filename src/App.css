@@ -1,0 +1,264 @@
+/* PAGINA GENERAL */
+
+/** {
+  border: 1px red solid;
+}*/
+
+body {
+  /*background-image: url("../public/ImagenesPag/Fondo.jpg");*/
+  background-image: url("../public/ImagenesPag/FondoC.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-origin: border-box, padding-box;
+  background-attachment: fixed;
+  width: 80%;
+  margin:auto;
+  color: white;
+}
+
+div.centrar {
+  width: 80%;
+  margin:auto;
+}
+
+.Vacio {
+  padding-top: 20px;
+}
+
+.menus{
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  font-size: large;
+}
+
+.logo{
+  height: 75px;
+}
+
+/* LOGIN */
+
+div.contenedorLogin {
+  color: black;
+  width: 300px;
+  margin:auto;
+  margin-top: 30px;
+  border: 1px rgba(7, 7, 7, 0.767) solid;
+  padding: 10px 15px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 5px 5px 25px;
+}
+
+div.contenedorLogin button {
+  background-color: #1a6ed0;
+}
+
+div.contenedorLogin button:hover{
+  background-color: #0c305c;
+}
+
+div.contenedorLogin h2 {
+  text-align: center;
+}
+
+.tituloBV {
+  text-align: center;
+  margin-top: 10px;
+  
+}
+
+/* PAGINA USUARIO */
+
+.accordion-button:not(.collapsed){  
+  text-align: "center";
+  background-color: #1a6ed0;
+  color: white;
+  font-weight: bold;
+}
+
+p#SinVeh{
+  color:rgb(255, 0, 0);
+  background-color: rgba(255, 149, 137, 0.89);
+  border: 1px solid rgb(255, 0, 0);
+  width: 625px;
+  margin: auto;
+  padding: 5px;
+  white-space: normal;
+}
+
+/* INFORMACION */
+
+.Informacion {
+  background-color: rgba(255, 255, 255, 0.75);
+  color: black;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border: 1px rgba(7, 7, 7, 0.767) solid;
+  border-radius: 20px;
+  box-shadow: 5px 5px 25px;
+}
+
+.Informacion h5 {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.Informacion p {
+  text-align: justify;
+}
+
+.Informacion div.mapa {
+  margin: auto;
+  width: 300px;
+  padding-bottom: 15px;
+}
+
+.Informacion div.mapa iframe{
+  height: 250px;
+  border-radius: 20px;
+}
+
+.Informacion li.SinPunto{
+  list-style: none;
+}
+
+/* Vista pagina admin */
+
+div.Consultas {
+  color: black;
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.75);
+  margin: auto;
+  margin-top: 15px;
+  margin-right: 30px;
+  padding: 15px 20px;
+  border: 1px rgba(7, 7, 7, 0.767) solid;
+  border-radius: 20px;
+}
+
+div.Consultas button {
+  background-color: #1a6ed0;
+}
+
+div.Consultas button:hover{
+  background-color: #0c305c;
+}
+
+div.Consultas p {
+  text-align: center;
+}
+
+div.Consultas Form {
+  margin: auto;
+  width: 80%;
+}
+
+div.Consultas button {
+  margin-top: 10px;
+}
+
+div.Modificaciones {
+  color: black;
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.75);
+  margin: auto;
+  margin-top: 15px;
+  padding: 15px 0px;
+  text-align: center;
+  border: 1px rgba(7, 7, 7, 0.767) solid;
+  border-radius: 20px;
+
+}
+
+div.Modificaciones button {
+  margin: 10px;
+  background-color: #1a6ed0;
+}
+
+div.Modificaciones button:hover{
+  background-color: #0c305c;
+}
+
+/* CONSULTAS ADMIN */
+
+div#ConsulDNI , div#ConsulMat{
+  border: 1px solid rgba(0, 0, 0, 0.233);
+  border-radius: 10px;
+  background-color: rgba(230, 230, 230, 0.63);
+}
+
+div#ConsulDNI{
+  margin: 10px 0px;
+}
+
+/* MODALES */
+
+div.modal {
+  color: black;
+}
+
+div#ConsulDNI {
+  padding: 15px;
+}
+
+/* CARTAS GENERAL */
+
+div.card {
+  color: black;
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+div#TarjetasClientes {
+  margin: auto;
+}
+
+div.row {
+  margin: auto;
+}
+
+    /* VEHICULOS */
+
+div.card Img {
+  height: 200px;
+  width: 250px;
+  object-fit: cover;
+  padding: 0px 5px;
+  border-radius: 15px;
+}
+
+div.card button {
+  margin: 0px 7px;
+}
+
+div.card li {
+  list-style: none;
+}
+
+    /* CLIENTES */
+
+div .Clientes {
+  width: 80%;
+  margin:auto;
+  text-align: center;
+}
+
+div .Clientes #TarjetasClientes {
+  margin: auto;
+  margin-top: 15px;
+}
+
+/* LINKS */
+.text-link{
+  color: black;
+  text-decoration: inherit;
+  margin: 5px
+}
+
+Button .text-link {
+  color: inherit;
+}
+
