@@ -37,11 +37,9 @@ export default function Login ({onIdentificar,onTipo,onNombre,url,urlImg}) {
             onIdentificar(datos.usuario);
             onTipo(datos.tipo);
             onNombre(datos.nombre);
-            //UserProfile.setTipo(datos.tipo);
-            //UserProfile.setName(datos.nombre);
         }else{
             setError(true);
-        }});                
+        }},[]);                
   }
 
   return (   
