@@ -26,14 +26,14 @@ const Consultas = ( {titulo, visible, datos, cerrar, url, usuario, tamano, estad
                           <div>
                             <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="" width="300px" height="175px" src={urlServImg + `/ImagenesCoches/CochesClientes/${datos.Imagen}`} />
                             <div>
-                              <p style={{margin: "20px", textAlign:"justify"}}>Propietario: {datos.DNI}</p>
-                              <p style={{margin: "20px", textAlign:"justify"}}>Marca: {datos.Marca}</p>
-                              <p style={{margin: "20px", textAlign:"justify"}}>Modelo: {datos.Modelo}</p>
-                              <p style={{margin: "20px", textAlign:"justify"}}>Color: {datos.Color}</p>
-                              <p style={{ textAlign: "justify" }}>Estado del vehiculo: Dentro - Fecha de entrada: {estado.UltimaEntrada}</p>
+                              <p>Propietario: {datos.DNI}</p>
+                              <p>Marca: {datos.Marca}</p>
+                              <p>Modelo: {datos.Modelo}</p>
+                              <p>Color: {datos.Color}</p>
+                              <p>Estado: Dentro - Fecha de entrada: {estado.UltimaEntrada}</p>
                             </div>
                           </div>
-                          <h5>A pagar por este vehiculo: {estado.Pagar}€</h5>
+                          <h5 className='pPrecio'>A pagar por este vehiculo: {estado.Pagar}€</h5>
                         </>
                       )
                     } else {
@@ -42,14 +42,14 @@ const Consultas = ( {titulo, visible, datos, cerrar, url, usuario, tamano, estad
                           <div>
                             <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="" width="300px" height="175px" src={urlServImg + `/ImagenesCoches/CochesClientes/${datos.Imagen}`} />
                             <div>
-                              <p style={{margin: "20px", textAlign:"justify"}}>Propietario: {datos.DNI}</p>
-                              <p style={{margin: "20px", textAlign:"justify"}}>Marca: {datos.Marca}</p>
-                              <p style={{margin: "20px", textAlign:"justify"}}>Modelo: {datos.Modelo}</p>
-                              <p style={{margin: "20px", textAlign:"justify"}}>Color: {datos.Color}</p>
-                              <p style={{ textAlign: "justify" }}>Estado del vehiculo: Fuera - Fecha de salida: {estado.UltimaSalida}</p>
+                              <p>Propietario: {datos.DNI}</p>
+                              <p>Marca: {datos.Marca}</p>
+                              <p>Modelo: {datos.Modelo}</p>
+                              <p>Color: {datos.Color}</p>
+                              <p>Estado: Fuera - Fecha de salida: {estado.UltimaSalida}</p>
                             </div>
                           </div>
-                          <h5>A pagar por este vehiculo: {estado.Pagar}€</h5>
+                          <h5 className='pPrecio'>A pagar por este vehiculo: {estado.Pagar}€</h5>
                         </>
                       )
                     }
@@ -63,14 +63,14 @@ const Consultas = ( {titulo, visible, datos, cerrar, url, usuario, tamano, estad
                     <div>
                       <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="" width="300px" height="175px" src={process.env.PUBLIC_URL + `/ImagenesCoches/CochesClientes/${datos.Imagen}`} />
                       <div>
-                        <p style={{margin: "20px", textAlign:"justify"}}>Propietario: {datos.DNI}</p>
-                        <p style={{margin: "20px", textAlign:"justify"}}>Marca: {datos.Marca}</p>
-                        <p style={{margin: "20px", textAlign:"justify"}}>Modelo: {datos.Modelo}</p>
-                        <p style={{margin: "20px", textAlign:"justify"}}>Color: {datos.Color}</p>
-                        <p style={{ textAlign: "justify" }}>Estado del vehiculo: Fuera</p>
+                        <p>Propietario: {datos.DNI}</p>
+                        <p>Marca: {datos.Marca}</p>
+                        <p>Modelo: {datos.Modelo}</p>
+                        <p>Color: {datos.Color}</p>
+                        <p>Estado: Fuera</p>
                       </div>
                     </div>
-                    <h5>No se ha efectuado ninguna entrada al parking</h5>
+                    <h5 className='pPrecio'>No se ha efectuado ninguna entrada al parking</h5>
                   </>
                 }
               </div>            
@@ -99,8 +99,8 @@ const Consultas = ( {titulo, visible, datos, cerrar, url, usuario, tamano, estad
               let estadoTexto = "No ha efectuado ninguna entrada";
               if (estadoVehiculo) {
                 estadoTexto = estadoVehiculo.Estado === "Dentro" ? 
-                  `Estado del vehiculo: Dentro - Fecha de entrada: ${estadoVehiculo.UltimaEntrada}` : 
-                  `Estado del vehiculo: Fuera - Fecha de salida: ${estadoVehiculo.UltimaSalida}`;
+                  `Estado: Dentro - Fecha de entrada: ${estadoVehiculo.UltimaEntrada}` : 
+                  `Estado: Fuera - Fecha de salida: ${estadoVehiculo.UltimaSalida}`;
               }
               const aPagar = estadoVehiculo ? estadoVehiculo.Pagar : 0;
               return (

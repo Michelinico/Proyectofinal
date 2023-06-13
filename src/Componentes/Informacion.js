@@ -21,8 +21,8 @@ export default function Informacion() {
             </Col>
             <Col>
                 <h5>SOBRE NOSOTROS</h5> 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices, tortor id elementum congue, orci est lacinia magna, in luctus ipsum nibh eu libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit laoreet felis a congue. Duis ornare sodales turpis eu volutpat.</p>
-                <p>Sed in quam aliquet velit pretium lobortis. Donec non dictum sem. Praesent sem nisi, porttitor a quam non, vulputate luctus odio.</p>
+                <p>En nuestro parking privado, ofrecemos servicios de estacionamiento seguros y convenientes. Con instalaciones modernas y seguras, ubicación conveniente y atención al cliente excepcional, nos esforzamos por proporcionar una experiencia placentera.</p>
+                <p>Además, nos comprometemos con prácticas sostenibles para proteger el medio ambiente. ¡Esperamos recibirte en nuestro parking privado!</p>
             </Col>
             <Col>
                 <h5>LOCALÍZANOS</h5>

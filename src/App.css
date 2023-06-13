@@ -54,6 +54,7 @@ div.contenedorLogin {
 
 div.contenedorLogin button {
   background-color: #1a6ed0;
+  margin: 0px 22px;
 }
 
 div.contenedorLogin button:hover{
@@ -160,6 +161,16 @@ div.Consultas button {
   margin-top: 10px;
 }
 
+div#ConsulMat p {
+  margin: 13px 20px;
+  text-align: justify;
+}
+
+div#ConsulMat h5.pPrecio {
+  margin-left: 25px;
+  text-align: justify;
+}
+
 div.Modificaciones {
   color: black;
   width: 50%;
@@ -216,7 +227,7 @@ div.card {
   margin-bottom: 20px;
 }
 
-div#TarjetasClientes {
+div#TarjetasClientes , div#TarjetasVehiculos{
   margin: auto;
 }
 
@@ -251,6 +262,11 @@ div .Clientes {
 }
 
 div .Clientes #TarjetasClientes {
+  margin: auto;
+  margin-top: 15px;
+}
+
+div .Clientes #TarjetasVehiculos {
   margin: auto;
   margin-top: 15px;
 }
