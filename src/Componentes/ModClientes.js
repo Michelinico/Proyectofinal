@@ -116,6 +116,7 @@ function ModClientes({url,urlImg,urlServImg}) {
                                 nombre={carta.Nombre}
                                 apellido={carta.Apellido}
                                 contraseña={carta.Contrasena}
+                                telefono={carta.Telefono}
                                 tipoUsu={carta.TipoUsu}
                                 avatar={carta.Avatar}
                                 plaza={carta.Plazas}

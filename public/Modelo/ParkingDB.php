@@ -20,7 +20,7 @@ class ParkingDB {
         $this->clave=$credenciales["clave"];
         $this->basedatos=$credenciales["basedatos"];
 
-        $this->conexion = new mysqli($this->servidor, $this->usuario, $this->clave, $this->basedatos);
+        $this->conexion = mysqli_connect($this->servidor, $this->usuario, $this->clave, $this->basedatos);
         if ($this->conexion->connect_error == true) {
             die("Error de conexion".$this->conexion->connect_error);
         }
@@ -209,10 +209,11 @@ class ParkingDB {
         $Nombre=$datosF['Nombre'];
         $Apellido=$datosF['Apellido'];
         $Contrasena=$datosF['Contrasena'];
+        $Telefono=$datosF['Telefono'];
         $TipoUsu=$datosF['TipoUsu'];
         $Avatar=$datosF["Avatar"];
-        $sql="insert into usuarios (DNI, Nombre, Apellido, Contrasena, TipoUsu, Avatar) VALUES (
-            '$DNI','$Nombre','$Apellido','$Contrasena','$TipoUsu','$Avatar')";
+        $sql="insert into usuarios (DNI, Nombre, Apellido, Contrasena, Telefono, TipoUsu, Avatar) VALUES (
+            '$DNI','$Nombre','$Apellido','$Contrasena','$Telefono','$TipoUsu','$Avatar')";
         $exito=$this->conexion->query($sql);
         return $exito;
     }
@@ -220,13 +221,14 @@ class ParkingDB {
     public function modCliente($datosF){
         $DNI=$datosF['DNI'];
         $Contrasena=$datosF['Contrasena'];
+        $Telefono=$datosF['Telefono'];
         $Avatar=$datosF["Avatar"];
         if ($Avatar==='') {
-            $sql="UPDATE usuarios SET Contrasena = '$Contrasena' WHERE DNI = '$DNI'";
+            $sql="UPDATE usuarios SET Contrasena = '$Contrasena', Telefono = '$Telefono' WHERE DNI = '$DNI'";
         }else if ($Contrasena===''){
-            $sql="UPDATE usuarios SET Avatar = '$Avatar' WHERE DNI = '$DNI'";
+            $sql="UPDATE usuarios SET Avatar = '$Avatar', Telefono = '$Telefono' WHERE DNI = '$DNI'";
         }else{
-            $sql="UPDATE usuarios SET Contrasena = '$Contrasena', Avatar = '$Avatar' WHERE DNI = '$DNI'";
+            $sql="UPDATE usuarios SET Contrasena = '$Contrasena', Avatar = '$Avatar', Telefono = '$Telefono' WHERE DNI = '$DNI'";
         }
         $exito=$this->conexion->query($sql);
         return $exito;
@@ -236,6 +238,51 @@ class ParkingDB {
         $sql="delete from usuarios where DNI='$DNI'";
         $exito=$this->conexion->query($sql);
         return $exito;
+    }
+
+    // ENTRADA SALIDA PARKING //
+
+    public function entrada($matricula) {
+        $sql="SELECT * FROM coches WHERE Matricula='$matricula'";
+        $respuesta=$this->conexion->query($sql);
+        if ($respuesta->num_rows > 0) {
+            $sql="SELECT Salida FROM `entrada-salidas` WHERE Matricula='$matricula' ORDER BY `IDE-S` DESC LIMIT 1";
+            $respuesta=$this->conexion->query($sql);
+            $fila = $respuesta->fetch_assoc();
+            $valor = $fila['Salida'];
+            if ($valor!=NULL || $valor==""){
+                $sql="INSERT INTO `entrada-salidas`(`IDE-S`,Matricula,Entrada,Salida) VALUES (DEFAULT,'$matricula',CURRENT_TIMESTAMP,DEFAULT)";
+                $respuesta=$this->conexion->query($sql);
+                $exito = "ADELANTE";
+            }else {
+                $exito = "DENTRO";
+            }
+        }else{
+            $exito = "NODB";
+        }
+        return $exito;     
+    }
+
+    public function salida($matricula) {
+        $sql="SELECT * FROM coches WHERE Matricula='$matricula'";
+        $respuesta=$this->conexion->query($sql);
+        if ($respuesta->num_rows > 0) {
+            $sql="SELECT Salida FROM `entrada-salidas` WHERE Matricula='$matricula' ORDER BY `IDE-S` DESC LIMIT 1";
+            $respuesta=$this->conexion->query($sql);
+            $fila = $respuesta->fetch_assoc();
+            $valor = $fila['Salida'];
+            if ($valor==NULL){
+                $sql="UPDATE `entrada-salidas` SET `Salida`=CURRENT_TIMESTAMP WHERE Matricula='$matricula'";
+                $respuesta=$this->conexion->query($sql);
+                $exito = "ADELANTE";
+            }else {
+                $exito = "FUERA";
+            }
+        }else{
+            $exito = "ERROR EN LA LECTURA";
+        }
+        return $exito; 
+         
     }
     
     /* Cierra la conexión con la base de datos */

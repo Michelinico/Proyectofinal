@@ -204,6 +204,10 @@ div#ConsulDNI {
   padding: 15px;
 }
 
+.full-width-alert {
+  margin-bottom: 0;
+}
+
 /* CARTAS GENERAL */
 
 div.card {

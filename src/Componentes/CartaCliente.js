@@ -4,7 +4,7 @@ import ModalesClientes from './ModalesClientes';
 
 import { useState} from "react";
 
-function CartaCliente({DNI,nombre,apellido,avatar,plaza,url,onLeer,setMAlerta,setMostrar,urlImg,urlServImg}) {
+function CartaCliente({DNI,nombre,apellido,telefono,avatar,plaza,url,onLeer,setMAlerta,setMostrar,urlImg,urlServImg}) {
 
     function borrarCliente(DNI) {
         const cabecera = {
@@ -16,13 +16,13 @@ function CartaCliente({DNI,nombre,apellido,avatar,plaza,url,onLeer,setMAlerta,se
         fetch(url, cabecera)
         .then(response => response.json())
         .then(datos => {
-            let texto;
-            if (datos.exito) {
-                texto="El mensaje se ha eliminado con éxito";
+            if (datos) {
+                setMAlerta('exitoBC')
+                setMostrar(true)
             }else{
-                texto="El mensaje no ha podido ser eliminado";
+                setMAlerta('falloBC')
+                setMostrar(true)
             }
-            alert(texto)
             onLeer();
         });
     };
@@ -33,6 +33,12 @@ function CartaCliente({DNI,nombre,apellido,avatar,plaza,url,onLeer,setMAlerta,se
 
     const [visible, setVisible] = useState(false);
 
+    const abrirPregunta= () => {
+        setVisibleP(true);
+      }
+
+    const [visibleP, setVisibleP] = useState(false);
+
     return (
         <Card className='Carta'>
             <Card.Title>{DNI}</Card.Title>
@@ -41,6 +47,7 @@ function CartaCliente({DNI,nombre,apellido,avatar,plaza,url,onLeer,setMAlerta,se
                 <Card.Text>
                     <li>Nombre: {nombre}</li>
                     <li>Apellido: {apellido}</li>
+                    <li>Telefono: {telefono}</li>
                     <li>Plazas: {plaza}</li>
                 </Card.Text>
                 <Button onClick={abrirCuadro} variant="primary">Modificar</Button>
@@ -49,16 +56,20 @@ function CartaCliente({DNI,nombre,apellido,avatar,plaza,url,onLeer,setMAlerta,se
                     url={url} 
                     urlImg={urlImg}
                     titulo="MODIFICAR CLIENTE"
+                    telefonoV={telefono}
                     DNIm={DNI}
                     setMAlerta={setMAlerta}
                     setMostrar={setMostrar}
                     visible={visible}
                     cerrar={() => {setVisible(false)}}
                 />
-                <Button id={DNI} variant="primary"
-                        onClick={() => borrarCliente(DNI)
-                        }
-                >Borrar</Button>
+                <Button id={DNI} variant="primary" onClick={abrirPregunta}>Borrar</Button>
+                <ModalesClientes
+                    titulo="BORRAR CLIENTE"
+                    visible={visibleP}
+                    cerrar={() => {setVisibleP(false)}}
+                    borrar={() => {borrarCliente(DNI)}}
+                />
             </Card.Body>
         </Card>
     );

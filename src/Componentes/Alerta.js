@@ -11,7 +11,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
     show && cerrar &&
     ReactDOM.createPortal(
     <Modal variant="primary" backdrop show={show} onHide={cerrar}>
-      <Alert variant="primary">
+      <Alert variant="primary" className="full-width-alert">
           El vehículo se ha introducido en el sistema.
       </Alert>
     </Modal>, contenedor)
@@ -23,7 +23,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
       show && cerrar &&
       ReactDOM.createPortal(
       <Modal variant="primary" backdrop show={show} onHide={cerrar}>
-        <Alert variant="danger">
+        <Alert variant="danger" className="full-width-alert">
             No se ha podido agregar el vehículo.
         </Alert>
       </Modal>, contenedor)
@@ -35,8 +35,8 @@ const Alerta = ({show,cerrar, MAlerta}) => {
       show && cerrar &&
       ReactDOM.createPortal(
       <Modal variant="primary" backdrop show={show} onHide={cerrar}>
-        <Alert variant="primary">
-            El vehículo se ha introducido en el sistema.
+        <Alert variant="primary" className="full-width-alert">
+            El vehículo se ha modificado el vehiculo.
         </Alert>
       </Modal>, contenedor)
     );
@@ -47,7 +47,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
         show && cerrar &&
         ReactDOM.createPortal(
         <Modal variant="primary" backdrop show={show} onHide={cerrar}>
-          <Alert variant="danger">
+          <Alert variant="danger" className="full-width-alert">
             No se ha podido modificar el vehiculo.
           </Alert>
         </Modal>, contenedor)
@@ -59,7 +59,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
       show && cerrar &&
       ReactDOM.createPortal(
       <Modal variant="primary" backdrop show={show} onHide={cerrar}>
-        <Alert variant="danger">
+        <Alert variant="danger" className="full-width-alert">
           Las contraseñas no son iguales.
         </Alert>
       </Modal>, contenedor)
@@ -71,7 +71,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
       show && cerrar &&
       ReactDOM.createPortal(
       <Modal variant="primary" backdrop show={show} onHide={cerrar}>
-        <Alert variant="primary">
+        <Alert variant="primary" className="full-width-alert">
           Se ha realizado el registro con éxito.
         </Alert>
       </Modal>, contenedor)
@@ -83,7 +83,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
       show && cerrar &&
       ReactDOM.createPortal(
       <Modal variant="primary" backdrop show={show} onHide={cerrar}>
-        <Alert variant="primary">
+        <Alert variant="primary" className="full-width-alert">
             El usuario se ha introducido en el sistema.
         </Alert>
       </Modal>, contenedor)
@@ -95,7 +95,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
       show && cerrar &&
       ReactDOM.createPortal(
       <Modal variant="primary" backdrop show={show} onHide={cerrar}>
-        <Alert variant="danger">
+        <Alert variant="danger" className="full-width-alert">
             No se ha podido agregar el usuario.
         </Alert>
       </Modal>, contenedor)
@@ -107,7 +107,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
       show && cerrar &&
       ReactDOM.createPortal(
       <Modal variant="primary" backdrop show={show} onHide={cerrar}>
-        <Alert variant="primary">
+        <Alert variant="primary" className="full-width-alert">
             El usuario se ha modificado.
         </Alert>
       </Modal>, contenedor)
@@ -119,8 +119,56 @@ const Alerta = ({show,cerrar, MAlerta}) => {
       show && cerrar &&
       ReactDOM.createPortal(
       <Modal variant="primary" backdrop show={show} onHide={cerrar}>
-        <Alert variant="danger">
+        <Alert variant="danger" className="full-width-alert">
             No se ha podido modificar el usuario.
+        </Alert>
+      </Modal>, contenedor)
+    );
+  }
+
+  if (MAlerta==="exitoBC"){
+    return (
+      show && cerrar &&
+      ReactDOM.createPortal(
+      <Modal variant="primary" backdrop show={show} onHide={cerrar}>
+        <Alert variant="primary" className="full-width-alert">
+            El usuario se ha borrado con éxito.
+        </Alert>
+      </Modal>, contenedor)
+    );
+  }
+
+  if (MAlerta==="falloBC"){
+    return (
+      show && cerrar &&
+      ReactDOM.createPortal(
+      <Modal variant="primary" backdrop show={show} onHide={cerrar}>
+        <Alert variant="danger" className="full-width-alert">
+            No se ha podido borrar el usuario.
+        </Alert>
+      </Modal>, contenedor)
+    );
+  }
+
+  if (MAlerta==="exitoBV"){
+    return (
+      show && cerrar &&
+      ReactDOM.createPortal(
+      <Modal backdrop show={show} onHide={cerrar}>
+        <Alert variant="primary" className="full-width-alert">
+            El vehiculo se ha borrado con éxito.
+        </Alert>
+      </Modal>, contenedor)
+    );
+  }
+
+  if (MAlerta==="falloBV"){
+    return (
+      show && cerrar &&
+      ReactDOM.createPortal(
+      <Modal variant="primary" backdrop show={show} onHide={cerrar}>
+        <Alert variant="danger">
+            No se ha podido borrar el vehiculo.
         </Alert>
       </Modal>, contenedor)
     );

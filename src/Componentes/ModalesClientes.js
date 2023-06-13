@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 const contenedor=document.querySelector("#contenedorModal");
 
-const ModalesClientes = ({titulo, visible, cerrar, setMostrar, url, setMAlerta, onLeer, urlImg, registro, DNIm}) => {
+const ModalesClientes = ({titulo, visible, cerrar, borrar, setMostrar, url, setMAlerta, onLeer, urlImg, registro, DNIm, telefonoV}) => {
 
   const [avatarSelec, setAvatarSelec] = useState({});
 
@@ -59,6 +59,7 @@ const ModalesClientes = ({titulo, visible, cerrar, setMostrar, url, setMAlerta, 
       Nombre:'',
       Apellido:'',
       Contrasena:'',
+      Telefono:'',
       REContrasena:'',
       TipoUsu:'Cliente',
       Avatar:''
@@ -85,6 +86,7 @@ const ModalesClientes = ({titulo, visible, cerrar, setMostrar, url, setMAlerta, 
       DNI:DNIm,
       Contrasena:'',
       REContrasena:'',
+      Telefono:telefonoV,
       Avatar:''
     });
   
@@ -124,6 +126,16 @@ const ModalesClientes = ({titulo, visible, cerrar, setMostrar, url, setMAlerta, 
                     </>
                   )}
 
+                  <Form.Group className="mb-3" controlId="formTelefono">
+                    <Form.Label>Telefono</Form.Label>
+                    <Form.Control type="text" placeholder="Introduce el Telefono"
+                    name="Telefono" 
+                    value={formDataUM.Telefono}
+                    onChange={(e) =>
+                      setFormDataUM({ ...formDataUM, Telefono: e.target.value })
+                    }/>
+                  </Form.Group>
+
                   <Form.Group className="mb-3" controlId="formAvatar">
                     <Form.Label>Avatar</Form.Label>
                     <Form.Control type="file" accept="image/*"
@@ -144,16 +156,16 @@ const ModalesClientes = ({titulo, visible, cerrar, setMostrar, url, setMAlerta, 
               <Button variant="primary" type="submit"
                 onClick={() =>
                   {
-                  if ( formDataUM.Contrasena==='' && formDataUM.Avatar===''){
+                  if ( formDataUM.Contrasena==='' && formDataUM.Avatar==='' && formDataUM.Telefono===''){
                     setMAlerta('falloCM')
                     setMostrar(true)
-                  }else if( formDataUM.Contrasena!=='' && formDataUM.Avatar===''){
+                  }else if( formDataUM.Contrasena!=='' && formDataUM.Avatar==='' && formDataUM.Telefono!==''){
                     modUsuario(formDataUM)
                   }else {
                     modUsuario(formDataUM)
                     enviarAvatar()
                   }
-                  setFormDataUM({ ...formDataUM, Contrasena: '', REContrasena: '', Avatar: ''})
+                  setFormDataUM({ ...formDataUM, Contrasena: '', REContrasena: '', Telefono: telefonoV, Avatar: ''})
                 cerrar()}}>Enviar</Button>
             </Modal.Footer>
           </Modal>, contenedor)
@@ -224,7 +236,17 @@ const ModalesClientes = ({titulo, visible, cerrar, setMostrar, url, setMAlerta, 
                   <>
                     <Alert key="danger" variant="danger">Las contraseñas no coinciden</Alert>
                   </>
-                )}               
+                )}
+
+                <Form.Group className="mb-3" controlId="formTelefono">
+                  <Form.Label>Telefono</Form.Label>
+                  <Form.Control type="text" placeholder="Introduce el Telefono"
+                  name="Telefono" 
+                  value={formDataU.Telefono}
+                  onChange={(e) =>
+                    setFormDataU({ ...formDataU, Telefono: e.target.value })
+                  }/>
+                </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formAvatar">
                   <Form.Label>Avatar</Form.Label>
@@ -276,6 +298,31 @@ const ModalesClientes = ({titulo, visible, cerrar, setMostrar, url, setMAlerta, 
                     }
                   }
                 }>Enviar</Button>
+            </Modal.Footer>
+          </Modal>, contenedor)
+    );
+  }
+
+  if (titulo==="BORRAR CLIENTE"){
+    return(
+        visible && 
+        ReactDOM.createPortal(
+            <Modal show={visible} onHide={cerrar}>
+            <Modal.Header>
+              <Modal.Title>{titulo}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p>¿Estás seguro de que lo quieres borrar?</p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={cerrar}>
+                Cancelar
+              </Button>
+              <Button variant="primary" type="submit"
+                onClick={() => {
+                  cerrar()
+                  borrar()
+                }}>Si</Button>
             </Modal.Footer>
           </Modal>, contenedor)
     );

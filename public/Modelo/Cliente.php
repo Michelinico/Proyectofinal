@@ -6,6 +6,7 @@ class Cliente {
     private $Nombre;
     private $Apellido;
     private $Contrasena;
+    private $telefono;
     private $TipoUsu;
     private $Avatar;
     private $Plazas;
@@ -16,6 +17,7 @@ class Cliente {
             $this->Nombre=$datos["Nombre"];
             $this->Apellido=$datos["Apellido"];
             $this->Contrasena=$datos["Contrasena"];
+            $this->Telefono=$datos["Telefono"];
             $this->TipoUsu=$datos["TipoUsu"];
             $this->Avatar=$datos["Avatar"];
             $this->Plazas=$datos["Plazas"];
@@ -40,6 +42,10 @@ class Cliente {
 
     public function getContrasena() {
         return $this->Contrasena;
+    }
+
+    public function getTelefono() {
+        return $this->Telefono;
     }
 
     public function getTipoUsu() {
@@ -72,6 +78,10 @@ class Cliente {
 
     public function setContrasena($valor) {
         $this->Contrasena=$valor;
+    }
+
+    public function setTelefono($valor) {
+        $this->Telefono=$valor;
     }
 
     public function setTipoUsu($valor) {

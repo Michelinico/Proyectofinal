@@ -16,14 +16,14 @@ function CartaVehiculo({matricula, propietario, marca, modelo, color, plaza, ima
         fetch(url, cabecera)
         .then(response => response.json())
         .then(datos => {
-            let texto;
-            if (datos.exito) {
-                texto="El mensaje se ha eliminado con éxito";
+            if (datos) {
+                setMAlerta('exitoBV')
+                setMostrar(true)
             }else{
-                texto="El mensaje no ha podido ser eliminado";
+                setMAlerta('falloBV')
+                setMostrar(true)
             }
-            onLeer();
-            alert(texto)           
+            onLeer();          
         });
     };
 
@@ -33,6 +33,12 @@ function CartaVehiculo({matricula, propietario, marca, modelo, color, plaza, ima
       }
 
     const [visible, setVisible] = useState(false);
+
+    const abrirPregunta= () => {
+        setVisibleP(true);
+      }
+
+    const [visibleP, setVisibleP] = useState(false);
 
     return (
         <Card className='Carta'>
@@ -61,10 +67,13 @@ function CartaVehiculo({matricula, propietario, marca, modelo, color, plaza, ima
                     visible={visible}
                     cerrar={() => {setVisible(false)}}
                 />
-                <Button id={matricula} variant="primary" show={false}
-                        onClick={() => borrarCoche(matricula)
-                        }
-                >Borrar</Button>
+                <Button id={matricula} variant="primary" onClick={abrirPregunta}>Borrar</Button>
+                <ModalesVehiculos
+                    titulo="BORRAR VEHICULO"
+                    visible={visibleP}
+                    cerrar={() => {setVisibleP(false)}}
+                    borrar={() => {borrarCoche(matricula)}}
+                />
             </Card.Body>
         </Card>
     );

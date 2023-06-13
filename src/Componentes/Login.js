@@ -13,7 +13,7 @@ export default function Login ({onIdentificar,onTipo,onNombre,url,urlImg}) {
   
   const [error, setError] = useState(false);
 
-  const iniciarSesion = () => {
+  function iniciarSesion(){
     // Recogemos el texto de los campos usuario y contraseña
     let DNI = document.getElementById("txtusu").value;
     let clave = document.getElementById("txtpas").value;
@@ -39,7 +39,7 @@ export default function Login ({onIdentificar,onTipo,onNombre,url,urlImg}) {
             onNombre(datos.nombre);
         }else{
             setError(true);
-        }},[]);                
+        }},[url]);                
   }
 
   return (   

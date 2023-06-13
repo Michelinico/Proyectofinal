@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 const contenedor=document.querySelector("#contenedorModal");
 
-const ModalesVehiculos = ({titulo, visible, cerrar, setMostrar, url, setMAlerta, colorV, plazaV, matricula, onLeer, urlImg}) => {
+const ModalesVehiculos = ({titulo, visible, cerrar,borrar, setMostrar, url, setMAlerta, colorV, plazaV, matricula, onLeer, urlImg}) => {
   const [imagenSelec, setImagenSelec] = useState({});
 
   const nombreImagen = (event) => {
@@ -314,6 +314,31 @@ const ModalesVehiculos = ({titulo, visible, cerrar, setMostrar, url, setMAlerta,
                   }
                 setFormDataC({ ...formDataC, Matricula: '', DNI: '', Marca: '', Modelo: '', Color: '', Plaza: '', Imagen: '' })
               cerrar()}}>Enviar</Button>
+            </Modal.Footer>
+          </Modal>, contenedor)
+    );
+  }
+
+  if (titulo==="BORRAR VEHICULO"){
+    return(
+        visible && 
+        ReactDOM.createPortal(
+            <Modal show={visible} onHide={cerrar}>
+            <Modal.Header>
+              <Modal.Title>{titulo}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p>¿Estás seguro de que lo quieres borrar?</p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={cerrar}>
+                Cancelar
+              </Button>
+              <Button variant="primary" type="submit"
+                onClick={() => {
+                  cerrar()
+                  borrar()
+                }}>Si</Button>
             </Modal.Footer>
           </Modal>, contenedor)
     );
