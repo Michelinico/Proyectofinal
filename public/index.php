@@ -4,7 +4,11 @@ require_once("./Modelo/ParkingDB.php");
 session_start();
 
 $_post = json_decode(file_get_contents('php://input'),true);
-$accion=$_post["accion"];
+if ($_post==NULL){
+    $accion="comprobarUsu";
+}else{
+    $accion=$_post["accion"];
+}
 $parkingDB = new ParkingDB();
 
 switch ($accion) {
