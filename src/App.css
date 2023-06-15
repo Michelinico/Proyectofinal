@@ -166,6 +166,11 @@ div#ConsulMat p {
   text-align: justify;
 }
 
+div.InfoVeh p {
+  margin: 20px;
+  text-align: center;
+}
+
 div#ConsulMat h5.pPrecio {
   margin-left: 25px;
   text-align: justify;
@@ -195,9 +200,12 @@ div.Modificaciones button:hover{
 
 /* CONSULTAS ADMIN */
 
-div#ConsulDNI , div#ConsulMat{
+div#ConsulDNI , div#ConsulMat, div.InfoVeh{
   border: 1px solid rgba(0, 0, 0, 0.233);
   border-radius: 10px;
+}
+
+div#ConsulDNI , div#ConsulMat{
   background-color: rgba(230, 230, 230, 0.63);
 }
 

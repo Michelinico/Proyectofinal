@@ -83,8 +83,8 @@ export default function MenuUsu ({url, setMAlerta, setMostrar}) {
       let estadoTexto = "No ha efectuado ninguna entrada";
       if (estadoVehiculo) {
         estadoTexto = estadoVehiculo.Estado === "Dentro" ? 
-          `Estado del vehiculo: Dentro - Fecha de entrada: ${estadoVehiculo.UltimaEntrada}` : 
-          `Estado del vehiculo: Fuera - Fecha de salida: ${estadoVehiculo.UltimaSalida}`;
+          `Dentro - Fecha de entrada: ${estadoVehiculo.UltimaEntrada}` : 
+          `Fuera - Fecha de salida: ${estadoVehiculo.UltimaSalida}`;
       }
       const aPagar = estadoVehiculo ? estadoVehiculo.Pagar : 0;
       return(
@@ -95,14 +95,14 @@ export default function MenuUsu ({url, setMAlerta, setMostrar}) {
             <Row>
               <Col>
                 <img style={{objectFit:"scale-down"}} alt="novedad" width="700px" height="400px" src={process.env.PUBLIC_URL + `/ImagenesCoches/CochesClientes/${coche.Imagen}`}></img>
-                <p style={{margin: "20px", textAlign:"justify"}}>{estadoTexto}</p>
+                <p style={{margin: "20px", textAlign:"justify"}}><b>Estado del vehiculo: </b>{estadoTexto}</p>
               </Col>
               <Col style={{margin:"auto", textAlign:"center"}}>
                 <div >
-                  <p style={{margin: "20px", textAlign:"center"}}>Marca: {coche.Marca}</p>
-                  <p style={{margin: "20px", textAlign:"center"}}>Modelo: {coche.Modelo}</p>
-                  <p style={{margin: "20px", textAlign:"center"}}>Color: {coche.Color}</p>
-                  <p style={{margin: "20px", textAlign:"center"}}>Plaza: {coche.Plaza}</p>
+                  <p><b>Marca:</b> {coche.Marca}</p>
+                  <p><b>Modelo:</b> {coche.Modelo}</p>
+                  <p><b>Color:</b> {coche.Color}</p>
+                  <p><b>Plaza:</b> {coche.Plaza}</p>
                 </div>
               </Col>
             </Row>
@@ -122,7 +122,7 @@ export default function MenuUsu ({url, setMAlerta, setMostrar}) {
   }else if ( url !== "" && usuario && tipo==="Cliente"){
     return ( 
       <>    
-        <Menu usuario={nombre} tipo={tipo} pagar={0}/>
+        <Menu usuario={nombre} tipo={tipo} pagar={0} url={url} setMAlerta={setMAlerta} setMostrar={setMostrar}/>
         <p className="h5  text-center" id="SinVeh">
           No se han encontrado vehiculos asociados a su nombre.
           Para agregar algún vehículo, póngase en contacto con nosotros.

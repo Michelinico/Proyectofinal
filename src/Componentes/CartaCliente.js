@@ -67,6 +67,9 @@ function CartaCliente({DNI,nombre,apellido,telefono,avatar,plaza,url,onLeer,setM
                 <ModalesClientes
                     titulo="BORRAR CLIENTE"
                     visible={visibleP}
+                    url={url}
+                    setMAlerta={setMAlerta}
+                    setMostrar={setMostrar}
                     cerrar={() => {setVisibleP(false)}}
                     borrar={() => {borrarCliente(DNI)}}
                 />
