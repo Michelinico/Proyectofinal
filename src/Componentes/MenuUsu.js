@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 
 import Menu from './Navbar';
 
-export default function MenuUsu ({url}) {
+export default function MenuUsu ({url, setMAlerta, setMostrar}) {
   
   useEffect(() => {
     const cabecera = {
@@ -68,7 +68,7 @@ export default function MenuUsu ({url}) {
     const pagar=(estados.filter((estado) => cochesUsu.find((coche) => coche.Matricula === estado.Matricula && coche.DNI === usuario)).reduce((total, estado) => total + parseFloat(estado.Pagar), 0).toFixed(2))
   return ( 
   <>
-    <Menu usuario={nombre} tipo={tipo} pagar={pagar} url={url}/>
+    <Menu usuario={nombre} tipo={tipo} pagar={pagar} url={url} setMAlerta={setMAlerta} setMostrar={setMostrar}/>
       
     <Accordion defaultActiveKey='0'>
       {cochesUsu.filter((coche) => coche.DNI === usuario).map((coche, index) => {

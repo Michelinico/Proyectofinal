@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
-export default function Menu({usuario, tipo, pagar, url}) {
+export default function Menu({usuario, tipo, pagar, url, setMAlerta, setMostrar}) {
 
   function cerrarSesion() {
     const cabecera = {
@@ -16,7 +16,8 @@ export default function Menu({usuario, tipo, pagar, url}) {
     fetch(url, cabecera)
       .then(response => response.json())
       .then(datos => {
-        alert("Se ha cerrado sesión");
+        setMAlerta('Cerrar')
+        setMostrar(true)
       });
   };
   

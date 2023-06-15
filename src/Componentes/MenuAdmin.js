@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Consultas from './Consultas';
 import Menu from './Navbar';
 
-export default function MenuAdmin ({url,urlServImg}) {
+export default function MenuAdmin ({url, urlServImg ,setMAlerta, setMostrar}) {
 
   const navigate = useNavigate();
 
@@ -118,7 +118,7 @@ export default function MenuAdmin ({url,urlServImg}) {
   if ( url !== "" && usuario && tipo==="Administrador"){
     return ( 
     <>
-      <Menu tipo={tipo} url={url}/>    
+      <Menu tipo={tipo} url={url} setMAlerta={setMAlerta} setMostrar={setMostrar}/>    
       <div id="caja_menu">
         <h3>PANEL DE ADMINISTRACIÓN</h3>
       </div>

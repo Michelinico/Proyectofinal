@@ -9,7 +9,7 @@ import CartaCliente from './CartaCliente';
 import Alerta from './Alerta';
 import Menu from './Navbar';
 
-function ModClientes({url,urlImg,urlServImg}) {
+function ModClientes({url,urlImg,urlServImg, MACerrar, setMostrarCerrar}) {
 
   useEffect(() => {
     const cabecera = {
@@ -75,7 +75,7 @@ function ModClientes({url,urlImg,urlServImg}) {
     if ( url !== "" && usuario && tipo==="Administrador"){
         return (
         <div className='Clientes'>
-          <Menu tipo={tipo} url={url}/>
+          <Menu tipo={tipo} url={url} setMAlerta={MACerrar} setMostrar={setMostrarCerrar}/>
           <Alerta show={mostrar} 
               cerrar={() => {setMostrar(false)}}
               MAlerta={MAlerta}/>

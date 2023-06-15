@@ -9,6 +9,7 @@ import ModClientes from './Componentes/ModClientes';
 import ModVehiculos from './Componentes/ModVehiculos';
 import MenuAdmin from './Componentes/MenuAdmin';
 import MenuUsu from './Componentes/MenuUsu';
+import Alerta from './Componentes/Alerta';
 
 function App() {
 
@@ -28,16 +29,19 @@ function App() {
 
   })
 
+  const [MAlerta, setMAlerta] = useState([]);
+  const [mostrar, setMostrar] = useState(false);
+
   return (
     <div className="App">
       
       <BrowserRouter>
         <Routes>
-          <Route path={process.env.PUBLIC_URL + `/`} element={ url !== "" && <Inicio url={url} urlImg={urlImg}/>}/>
-          <Route path={process.env.PUBLIC_URL + `/MenuAdm/ModClientes`} element={ url !== "" && <ModClientes url={url} urlImg={urlImg} urlServImg={urlServImg}/>} />
-          <Route path={process.env.PUBLIC_URL + `/MenuAdm/ModVehiculos`} element={ url !== "" && <ModVehiculos url={url} urlImg={urlImg} urlServImg={urlServImg}/>} />
-          <Route path={process.env.PUBLIC_URL + `/MenuAdm`} element={ url !== "" && <MenuAdmin url={url} urlServImg={urlServImg}/>} />
-          <Route path={process.env.PUBLIC_URL + `/InicioUsuario`} element={ url !== "" && <MenuUsu url={url} urlServImg={urlServImg}/>} />
+          <Route path={process.env.PUBLIC_URL + `/`} element={ url !== "" && <><Inicio url={url} urlImg={urlImg}/> <Alerta show={mostrar} cerrar={() => {setMostrar(false)}} MAlerta={MAlerta}/></>}/>
+          <Route path={process.env.PUBLIC_URL + `/MenuAdm/ModClientes`} element={ url !== "" && <ModClientes url={url} urlImg={urlImg} urlServImg={urlServImg} MACerrar={setMAlerta} setMostrarCerrar={setMostrar}/>} />
+          <Route path={process.env.PUBLIC_URL + `/MenuAdm/ModVehiculos`} element={ url !== "" && <ModVehiculos url={url} urlImg={urlImg} urlServImg={urlServImg} MACerrar={setMAlerta} setMostrarCerrar={setMostrar}/>} />
+          <Route path={process.env.PUBLIC_URL + `/MenuAdm`} element={ url !== "" && <MenuAdmin url={url} urlServImg={urlServImg} setMAlerta={setMAlerta} setMostrar={setMostrar}/>} />
+          <Route path={process.env.PUBLIC_URL + `/InicioUsuario`} element={ url !== "" && <MenuUsu url={url} urlServImg={urlServImg} setMAlerta={setMAlerta} setMostrar={setMostrar}/>} />
         </Routes>
       </BrowserRouter>
 

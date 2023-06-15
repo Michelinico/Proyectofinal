@@ -3,6 +3,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { useState } from 'react';
 
 import ModalesClientes from './ModalesClientes';
+import Alerta from './Alerta';
 
 export default function Login ({onIdentificar,onTipo,onNombre,url,urlImg}) {
 
@@ -42,8 +43,14 @@ export default function Login ({onIdentificar,onTipo,onNombre,url,urlImg}) {
         }},[url]);                
   }
 
+  const [MAlerta, setMAlerta] = useState([]);
+  const [mostrar, setMostrar] = useState(false);
+
   return (   
   <div className="contenedorLogin">
+    <Alerta show={mostrar} 
+              cerrar={() => {setMostrar(false)}}
+              MAlerta={MAlerta}/>
     <Form id="form_login">
       <h2>ACCESO</h2>
       <Form.Group className="mb-3" controlId="txtusu">
@@ -63,6 +70,8 @@ export default function Login ({onIdentificar,onTipo,onNombre,url,urlImg}) {
           urlImg={urlImg}
           titulo="Registro"
           visible={visible}
+          setMAlerta={setMAlerta}
+          setMostrar={setMostrar}
           cerrar={() => {setVisible(false)}}
         />
       </div>

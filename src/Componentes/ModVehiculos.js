@@ -9,7 +9,7 @@ import CartaVehiculo from './CartaVehiculo';
 import Alerta from './Alerta';
 import Menu from './Navbar';
 
-function ModVehiculos({url,urlImg,urlServImg}) {
+function ModVehiculos({url,urlImg,urlServImg,MACerrar, setMostrarCerrar}) {
 
   useEffect(() => {
     const cabecera = {
@@ -93,7 +93,7 @@ function ModVehiculos({url,urlImg,urlServImg}) {
   if ( url !== "" && usuario && tipo==="Administrador"){
     return (
       <div className='Clientes'>
-        <Menu tipo={tipo} url={url}/>
+        <Menu tipo={tipo} url={url} setMAlerta={MACerrar} setMostrar={setMostrarCerrar}/>
         <Alerta show={mostrar} 
               cerrar={() => {setMostrar(false)}}
               MAlerta={MAlerta}/>

@@ -97,6 +97,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
       <Modal variant="primary" backdrop show={show} onHide={cerrar}>
         <Alert variant="danger" className="full-width-alert">
             No se ha podido agregar el usuario.
+            Compruebe si ha rellenado todos los datos.
         </Alert>
       </Modal>, contenedor)
     );
@@ -167,8 +168,20 @@ const Alerta = ({show,cerrar, MAlerta}) => {
       show && cerrar &&
       ReactDOM.createPortal(
       <Modal variant="primary" backdrop show={show} onHide={cerrar}>
-        <Alert variant="danger">
+        <Alert variant="danger" className="full-width-alert">
             No se ha podido borrar el vehiculo.
+        </Alert>
+      </Modal>, contenedor)
+    );
+  }
+
+  if (MAlerta==="Cerrar"){
+    return (
+      show && cerrar &&
+      ReactDOM.createPortal(
+      <Modal variant="primary" backdrop show={show} onHide={cerrar}>
+        <Alert variant="primary" className="full-width-alert">
+            Se ha cerrado la sesión.
         </Alert>
       </Modal>, contenedor)
     );
