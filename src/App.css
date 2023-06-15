@@ -215,6 +215,10 @@ div#ConsulDNI{
 
 /* MODALES */
 
+.CentrarTitulo{
+  margin: auto;
+}
+
 div.modal {
   color: black;
 }
@@ -225,6 +229,12 @@ div#ConsulDNI {
 
 .full-width-alert {
   margin-bottom: 0;
+}
+
+table.TablaES {
+  border: 1px rgba(0, 0, 0, 0.233) solid;
+  border-radius: 15px;
+  text-align: center;
 }
 
 /* CARTAS GENERAL */
@@ -251,6 +261,10 @@ div.card Img {
   object-fit: cover;
   padding: 0px 5px;
   border-radius: 15px;
+}
+
+div.card button.BotHist {
+  margin-top: 10px;
 }
 
 div.card button {
