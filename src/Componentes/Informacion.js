@@ -21,7 +21,7 @@ export default function Informacion() {
             </Col>
             <Col>
                 <h5>SOBRE NOSOTROS</h5> 
-                <p>En nuestro parking privado, ofrecemos servicios de estacionamiento seguros y convenientes. Con instalaciones modernas y seguras, ubicación conveniente y atención al cliente excepcional, nos esforzamos por proporcionar una experiencia placentera.</p>
+                <p>En nuestro parking privado, ofrecemos servicios de estacionamiento seguros y convenientes. Con instalaciones modernas y seguras, ubicación con fácil acceso y atención al cliente excepcional, nos esforzamos por proporcionar una experiencia placentera.</p>
                 <p>Además, nos comprometemos con prácticas sostenibles para proteger el medio ambiente. ¡Esperamos recibirte en nuestro parking privado!</p>
             </Col>
             <Col>
