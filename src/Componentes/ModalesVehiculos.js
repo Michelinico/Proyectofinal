@@ -2,13 +2,14 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Table from 'react-bootstrap/Table';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 
 const contenedor=document.querySelector("#contenedorModal");
 
-const ModalesVehiculos = ({titulo, visible, cerrar,borrar, setMostrar, url, setMAlerta, colorV, plazaV, matricula, onLeer, urlImg}) => {
+const ModalesVehiculos = ({titulo, visible, cerrar,borrar, setMostrar, url, setMAlerta, colorV, plazaV, matricula, onLeer, urlImg, historialD}) => {
   const [imagenSelec, setImagenSelec] = useState({});
 
   const nombreImagen = (event) => {
@@ -136,7 +137,7 @@ const ModalesVehiculos = ({titulo, visible, cerrar,borrar, setMostrar, url, setM
         ReactDOM.createPortal(
             <Modal show={visible} onHide={cerrar}>
             <Modal.Header>
-              <Modal.Title>{titulo} {matricula}</Modal.Title>
+              <Modal.Title className="CentrarTitulo">{titulo} {matricula}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
@@ -206,7 +207,7 @@ const ModalesVehiculos = ({titulo, visible, cerrar,borrar, setMostrar, url, setM
         ReactDOM.createPortal(
             <Modal show={visible} onHide={cerrar}>
             <Modal.Header>
-              <Modal.Title>{titulo}</Modal.Title>
+              <Modal.Title className="CentrarTitulo">{titulo}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <Form encType="multipart/form-data">
@@ -325,7 +326,7 @@ const ModalesVehiculos = ({titulo, visible, cerrar,borrar, setMostrar, url, setM
         ReactDOM.createPortal(
             <Modal show={visible} onHide={cerrar}>
             <Modal.Header>
-              <Modal.Title>{titulo}</Modal.Title>
+              <Modal.Title className="CentrarTitulo">{titulo}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <p>¿Estás seguro de que lo quieres borrar?</p>
@@ -339,6 +340,45 @@ const ModalesVehiculos = ({titulo, visible, cerrar,borrar, setMostrar, url, setM
                   cerrar()
                   borrar()
                 }}>Si</Button>
+            </Modal.Footer>
+          </Modal>, contenedor)
+    );
+  }
+
+  if (titulo==="Historial"){
+    return(
+        visible && 
+        ReactDOM.createPortal(
+            <Modal show={visible} onHide={cerrar}>
+            <Modal.Header>
+              <Modal.Title className="CentrarTitulo">{titulo} de {matricula}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {historialD.length === 0 ? (
+                <p>No se han efectuado entradas.</p>
+              ) : (
+                <Table className="TablaES" bordered striped>
+                  <thead>
+                    <tr>
+                      <th>Entrada</th>
+                      <th>Salida</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {historialD.map((historial,index) => (
+                      <tr key={index}>
+                        <td>{historial.Entrada}</td>
+                        <td>{historial.Salida}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              )}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={cerrar}>
+                Cerrar
+              </Button>
             </Modal.Footer>
           </Modal>, contenedor)
     );

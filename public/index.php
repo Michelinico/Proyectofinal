@@ -55,6 +55,12 @@ switch ($accion) {
         echo json_encode($cocheUsuario);
     break;
 
+    case "leerhistorial":
+        $matricula = $_post['matricula'];
+        $historial = $parkingDB->historial($matricula);
+        echo json_encode($historial);
+    break;
+
     case "plazasdisponibles":
         $plazasDisponibles = $parkingDB->plazasDisponibles();
         echo json_encode($plazasDisponibles);

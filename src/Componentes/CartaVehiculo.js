@@ -27,18 +27,38 @@ function CartaVehiculo({matricula, propietario, marca, modelo, color, plaza, ima
         });
     };
 
+    const [historialD, setHistorial] = useState([]);
+
+    function historial(matricula) {
+        const cabecera = {
+          method:'POST',
+          headers: { 'Content-Type': 'application/json'},             
+          body: JSON.stringify({ accion:'leerhistorial', matricula: matricula})
+        };
+    
+        fetch(url, cabecera)
+        .then(response => response.json())
+        .then(datos => {
+            setHistorial(datos);          
+        });
+    };
+
     const abrirCuadro= () => {
         setVisible(true);
         onLeer();
-      }
-
+    }
     const [visible, setVisible] = useState(false);
 
     const abrirPregunta= () => {
         setVisibleP(true);
-      }
-
+    }
     const [visibleP, setVisibleP] = useState(false);
+
+    const abrirHistorial= () => {
+        setVisibleH(true);
+        historial(matricula);
+    }
+    const [visibleH, setVisibleH] = useState(false);
 
     return (
         <Card className='Carta'>
@@ -67,7 +87,16 @@ function CartaVehiculo({matricula, propietario, marca, modelo, color, plaza, ima
                     visible={visible}
                     cerrar={() => {setVisible(false)}}
                 />
-                <Button id={matricula} variant="primary" onClick={abrirPregunta}>Borrar</Button>
+                <Button id={matricula} variant="primary" onClick={abrirHistorial}>Historial</Button>
+                <ModalesVehiculos
+                    url={url} 
+                    matricula={matricula}
+                    historialD={historialD}
+                    titulo="Historial"
+                    visible={visibleH}
+                    cerrar={() => {setVisibleH(false)}}
+                />
+                <Button id={matricula} variant="primary" onClick={abrirPregunta} className="BotHist">Borrar</Button>
                 <ModalesVehiculos
                     titulo="BORRAR VEHICULO"
                     visible={visibleP}

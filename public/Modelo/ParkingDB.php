@@ -2,6 +2,7 @@
 require_once("Coche.php");
 require_once("Cliente.php");
 require_once("Estado.php");
+require_once("Historial.php");
 
 class ParkingDB {
 
@@ -128,6 +129,19 @@ class ParkingDB {
             $tupla = $cursor->fetch_assoc();
         }
         return $coches;     
+    }
+
+    public function historial($matricula) {
+        $historial = array();
+        $sql="SELECT Entrada,Salida FROM `entrada-salidas` WHERE Matricula='$matricula'";
+        $cursor=$this->conexion->query($sql);
+        $tupla = $cursor->fetch_assoc();
+        while ($tupla != null) {
+            $fila = new Historial($tupla);
+            array_push($historial, $fila->toArray());
+            $tupla = $cursor->fetch_assoc();
+        }
+        return $historial;     
     }
 
     public function plazasDisponibles() {
