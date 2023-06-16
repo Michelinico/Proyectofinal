@@ -161,7 +161,7 @@ div.Consultas button {
   margin-top: 10px;
 }
 
-div#ConsulMat p {
+div#ConsulMat p , div#ConsulDNI p {
   margin: 13px 20px;
   text-align: justify;
 }

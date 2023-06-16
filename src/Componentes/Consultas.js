@@ -24,7 +24,7 @@ const Consultas = ( {titulo, visible, datos, cerrar, url, usuario, tamano, estad
                       return (
                         <>
                           <div>
-                            <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="" width="300px" height="175px" src={urlServImg + `/ImagenesCoches/CochesClientes/${datos.Imagen}`} />
+                            <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/ImagenesCoches/CochesClientes/${datos.Imagen}`} />
                             <div>
                               <p>Propietario: {datos.DNI}</p>
                               <p>Marca: {datos.Marca}</p>
@@ -40,7 +40,7 @@ const Consultas = ( {titulo, visible, datos, cerrar, url, usuario, tamano, estad
                       return (
                         <>
                           <div>
-                            <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="" width="300px" height="175px" src={urlServImg + `/ImagenesCoches/CochesClientes/${datos.Imagen}`} />
+                            <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/ImagenesCoches/CochesClientes/${datos.Imagen}`} />
                             <div>
                               <p>Propietario: {datos.DNI}</p>
                               <p>Marca: {datos.Marca}</p>
@@ -61,7 +61,7 @@ const Consultas = ( {titulo, visible, datos, cerrar, url, usuario, tamano, estad
                 {!estados.some((estado) => estado.Matricula === datos.Matricula) &&
                   <>
                     <div>
-                      <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="" width="300px" height="175px" src={process.env.PUBLIC_URL + `/ImagenesCoches/CochesClientes/${datos.Imagen}`} />
+                      <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={process.env.PUBLIC_URL + `/ImagenesCoches/CochesClientes/${datos.Imagen}`} />
                       <div>
                         <p>Propietario: {datos.DNI}</p>
                         <p>Marca: {datos.Marca}</p>
@@ -105,13 +105,13 @@ const Consultas = ( {titulo, visible, datos, cerrar, url, usuario, tamano, estad
               const aPagar = estadoVehiculo ? estadoVehiculo.Pagar : 0;
               return (
                 <div key={index} id="ConsulDNI">
-                  <img style={{float: "left", objectFit:"scale-down", padding_right: "15px"}} alt="" width="300px" height="175px" src={process.env.PUBLIC_URL + `/ImagenesCoches/CochesClientes/${coche.Imagen}`}></img>
+                  <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={process.env.PUBLIC_URL + `/ImagenesCoches/CochesClientes/${coche.Imagen}`}></img>
                   <div>
-                    <p style={{textAlign: "justify" }}>Matricula: {coche.Matricula}</p>
-                    <p style={{ textAlign: "justify" }}>Marca: {coche.Marca}</p>
-                    <p style={{ textAlign: "justify" }}>Modelo: {coche.Modelo}</p>
-                    <p style={{ textAlign: "justify" }}>Color: {coche.Color}</p>
-                    <p style={{ textAlign: "justify" }}>{estadoTexto}</p>
+                    <p>Matricula: {coche.Matricula}</p>
+                    <p>Marca: {coche.Marca}</p>
+                    <p>Modelo: {coche.Modelo}</p>
+                    <p>Color: {coche.Color}</p>
+                    <p>{estadoTexto}</p>
                   </div>
                   <div className="Vacio"></div>
                   <h5>A pagar por este vehiculo: {aPagar}€</h5>
