@@ -25,6 +25,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
       <Modal variant="primary" backdrop show={show} onHide={cerrar}>
         <Alert variant="danger" className="full-width-alert">
             No se ha podido agregar el vehículo.
+            Compruebe si han rellenado todos los datos.
         </Alert>
       </Modal>, contenedor)
     );
@@ -97,7 +98,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
       <Modal variant="primary" backdrop show={show} onHide={cerrar}>
         <Alert variant="danger" className="full-width-alert">
             No se ha podido agregar el usuario.
-            Compruebe si ha rellenado todos los datos.
+            Compruebe si han rellenado todos los datos.
         </Alert>
       </Modal>, contenedor)
     );
