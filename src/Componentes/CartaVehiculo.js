@@ -63,7 +63,7 @@ function CartaVehiculo({matricula, propietario, marca, modelo, color, plaza, ima
     return (
         <Card className='Carta'>
             <Card.Title>{matricula}</Card.Title>
-            <Card.Img variant="top" src={urlServImg + `/ImagenesCoches/CochesClientes/${imagen}`} />
+            <Card.Img variant="top" src={urlServImg + `/CochesClientes/${imagen}`} />
             <Card.Body>
                 <Card.Text>
                     <li>Propietario: {propietario}</li>

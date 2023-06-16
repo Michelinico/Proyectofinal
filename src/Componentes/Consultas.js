@@ -24,7 +24,7 @@ const Consultas = ( {titulo, visible, datos, cerrar, url, usuario, tamano, estad
                       return (
                         <>
                           <div>
-                            <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/ImagenesCoches/CochesClientes/${datos.Imagen}`} />
+                            <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/CochesClientes/${datos.Imagen}`} />
                             <div>
                               <p>Propietario: {datos.DNI}</p>
                               <p>Marca: {datos.Marca}</p>
@@ -40,7 +40,7 @@ const Consultas = ( {titulo, visible, datos, cerrar, url, usuario, tamano, estad
                       return (
                         <>
                           <div>
-                            <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/ImagenesCoches/CochesClientes/${datos.Imagen}`} />
+                            <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/CochesClientes/${datos.Imagen}`} />
                             <div>
                               <p>Propietario: {datos.DNI}</p>
                               <p>Marca: {datos.Marca}</p>
@@ -61,7 +61,7 @@ const Consultas = ( {titulo, visible, datos, cerrar, url, usuario, tamano, estad
                 {!estados.some((estado) => estado.Matricula === datos.Matricula) &&
                   <>
                     <div>
-                      <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/ImagenesCoches/CochesClientes/${datos.Imagen}`} />
+                      <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/CochesClientes/${datos.Imagen}`} />
                       <div>
                         <p>Propietario: {datos.DNI}</p>
                         <p>Marca: {datos.Marca}</p>
@@ -105,7 +105,7 @@ const Consultas = ( {titulo, visible, datos, cerrar, url, usuario, tamano, estad
               const aPagar = estadoVehiculo ? estadoVehiculo.Pagar : 0;
               return (
                 <div key={index} id="ConsulDNI">
-                  <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/ImagenesCoches/CochesClientes/${coche.Imagen}`}></img>
+                  <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/CochesClientes/${coche.Imagen}`}></img>
                   <div>
                     <p>Matricula: {coche.Matricula}</p>
                     <p>Marca: {coche.Marca}</p>
