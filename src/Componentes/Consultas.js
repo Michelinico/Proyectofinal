@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const contenedor=document.querySelector("#contenedorConsulta");
 
-const Consultas = ( {titulo, visible, datos, cerrar, url, usuario, tamano, estados,urlServImg}) => {
+const Consultas = ( {titulo, visible, datos, cerrar, usuario, tamano, estados,urlServImg}) => {
     
   if (titulo==="Comprobar matrícula"){
     return(

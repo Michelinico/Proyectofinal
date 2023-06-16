@@ -17,7 +17,7 @@ const ModalesVehiculos = ({titulo, visible, cerrar,borrar, setMostrar, url, setM
   };
 
   const enviarImagen = async () => {
-    const path = './ImagenesCoches/CochesClientes/';
+    const path = './CochesClientes/';
 
     const datosImg = new FormData();
     datosImg.append('image', imagenSelec);
