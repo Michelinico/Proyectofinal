@@ -77,7 +77,7 @@ export default function Login ({onIdentificar,onTipo,onNombre,url,urlImg}) {
       </div>
     </Form>
     { 
-      error && <Alert key="danger" variant="danger">Usuario o contraseña incorrectos</Alert>
+      error && <Alert id="AlertaUsu" key="danger" variant="danger">Usuario o contraseña incorrectos</Alert>
     }
   </div>
 

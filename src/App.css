@@ -68,7 +68,10 @@ div.contenedorLogin h2 {
 .tituloBV {
   text-align: center;
   margin-top: 10px;
-  
+}
+
+#AlertaUsu {
+  margin-top: 10px;
 }
 
 /* PAGINA USUARIO */
