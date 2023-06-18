@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 
 import Menu from './Navbar';
 
-export default function MenuUsu ({url, setMAlerta, setMostrar}) {
+export default function MenuUsu ({url, urlServImg, setMAlerta, setMostrar}) {
   
   useEffect(() => {
     const cabecera = {
@@ -94,7 +94,7 @@ export default function MenuUsu ({url, setMAlerta, setMostrar}) {
           <div className="InfoVeh">
             <Row>
               <Col>
-                <img style={{objectFit:"scale-down"}} alt="novedad" width="700px" height="400px" src={process.env.PUBLIC_URL + `/ImagenesCoches/CochesClientes/${coche.Imagen}`}></img>
+                <img style={{objectFit:"scale-down"}} alt="novedad" width="700px" height="400px" src={urlServImg + `/CochesClientes/${coche.Imagen}`}></img>
                 <p style={{margin: "20px", textAlign:"justify"}}><b>Estado del vehiculo: </b>{estadoTexto}</p>
               </Col>
               <Col style={{margin:"auto", textAlign:"center"}}>
