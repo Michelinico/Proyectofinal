@@ -26,11 +26,11 @@ const Consultas = ( {titulo, visible, datos, cerrar, usuario, tamano, estados,ur
                           <div>
                             <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/CochesClientes/${datos.Imagen}`} />
                             <div>
-                              <p>Propietario: {datos.DNI}</p>
-                              <p>Marca: {datos.Marca}</p>
-                              <p>Modelo: {datos.Modelo}</p>
-                              <p>Color: {datos.Color}</p>
-                              <p>Estado: Dentro - Fecha de entrada: {estado.UltimaEntrada}</p>
+                              <p><b>Propietario:</b> {datos.DNI}</p>
+                              <p><b>Marca:</b> {datos.Marca}</p>
+                              <p><b>Modelo:</b> {datos.Modelo}</p>
+                              <p><b>Color:</b> {datos.Color}</p>
+                              <p><b>Estado:</b> Dentro - Fecha de entrada: {estado.UltimaEntrada}</p>
                             </div>
                           </div>
                           <h5 className='pPrecio'>A pagar por este vehiculo: {estado.Pagar}€</h5>
@@ -42,11 +42,11 @@ const Consultas = ( {titulo, visible, datos, cerrar, usuario, tamano, estados,ur
                           <div>
                             <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/CochesClientes/${datos.Imagen}`} />
                             <div>
-                              <p>Propietario: {datos.DNI}</p>
-                              <p>Marca: {datos.Marca}</p>
-                              <p>Modelo: {datos.Modelo}</p>
-                              <p>Color: {datos.Color}</p>
-                              <p>Estado: Fuera - Fecha de salida: {estado.UltimaSalida}</p>
+                              <p><b>Propietario:</b> {datos.DNI}</p>
+                              <p><b>Marca:</b> {datos.Marca}</p>
+                              <p><b>Modelo:</b> {datos.Modelo}</p>
+                              <p><b>Color:</b> {datos.Color}</p>
+                              <p><b>Estado:</b> Fuera - Fecha de salida: {estado.UltimaSalida}</p>
                             </div>
                           </div>
                           <h5 className='pPrecio'>A pagar por este vehiculo: {estado.Pagar}€</h5>
@@ -63,11 +63,11 @@ const Consultas = ( {titulo, visible, datos, cerrar, usuario, tamano, estados,ur
                     <div>
                       <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/CochesClientes/${datos.Imagen}`} />
                       <div>
-                        <p>Propietario: {datos.DNI}</p>
-                        <p>Marca: {datos.Marca}</p>
-                        <p>Modelo: {datos.Modelo}</p>
-                        <p>Color: {datos.Color}</p>
-                        <p>Estado: Fuera</p>
+                        <p><b>Propietario:</b> {datos.DNI}</p>
+                        <p><b>Marca:</b> {datos.Marca}</p>
+                        <p><b>Modelo:</b> {datos.Modelo}</p>
+                        <p><b>Color:</b> {datos.Color}</p>
+                        <p><b>Estado:</b> Fuera</p>
                       </div>
                     </div>
                     <h5 className='pPrecio'>No se ha efectuado ninguna entrada al parking</h5>
@@ -99,19 +99,19 @@ const Consultas = ( {titulo, visible, datos, cerrar, usuario, tamano, estados,ur
               let estadoTexto = "No ha efectuado ninguna entrada";
               if (estadoVehiculo) {
                 estadoTexto = estadoVehiculo.Estado === "Dentro" ? 
-                  `Estado: Dentro - Fecha de entrada: ${estadoVehiculo.UltimaEntrada}` : 
-                  `Estado: Fuera - Fecha de salida: ${estadoVehiculo.UltimaSalida}`;
+                  `Dentro - Fecha de entrada: ${estadoVehiculo.UltimaEntrada}` : 
+                  `Fuera - Fecha de salida: ${estadoVehiculo.UltimaSalida}`;
               }
               const aPagar = estadoVehiculo ? estadoVehiculo.Pagar : 0;
               return (
                 <div key={index} id="ConsulDNI">
                   <img style={{float: "left", objectFit:"scale-down", paddingRight: "15px"}} alt="Vehiculo" width="300px" height="175px" src={urlServImg + `/CochesClientes/${coche.Imagen}`}></img>
                   <div>
-                    <p>Matricula: {coche.Matricula}</p>
-                    <p>Marca: {coche.Marca}</p>
-                    <p>Modelo: {coche.Modelo}</p>
-                    <p>Color: {coche.Color}</p>
-                    <p>{estadoTexto}</p>
+                    <p><b>Matricula:</b> {coche.Matricula}</p>
+                    <p><b>Marca:</b>  {coche.Marca}</p>
+                    <p><b>Modelo:</b>  {coche.Modelo}</p>
+                    <p><b>Color:</b>  {coche.Color}</p>
+                    <p><b>Estado:</b>  {estadoTexto}</p>
                   </div>
                   <div className="Vacio"></div>
                   <h5>A pagar por este vehiculo: {aPagar}€</h5>
