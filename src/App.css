@@ -226,7 +226,7 @@ div.modal {
   color: black;
 }
 
-div#ConsulDNI {
+div#ConsulDNI , div#ConsulMat {
   padding: 15px;
 }
 
