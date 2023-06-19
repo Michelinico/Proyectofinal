@@ -43,23 +43,27 @@ function CartaVehiculo({matricula, propietario, marca, modelo, color, plaza, ima
         });
     };
 
+    // Apertura de modal modificar/borrar
     const abrirCuadro= () => {
         setVisible(true);
         onLeer();
     }
     const [visible, setVisible] = useState(false);
 
+    // Apertura de modal pregunta al borrar
     const abrirPregunta= () => {
         setVisibleP(true);
     }
     const [visibleP, setVisibleP] = useState(false);
 
+    // Apertura de modal del historial
     const abrirHistorial= () => {
         setVisibleH(true);
         historial(matricula);
     }
     const [visibleH, setVisibleH] = useState(false);
 
+    // Código para dibujar las cartas de los vehículos junto con sus modales
     return (
         <Card className='Carta'>
             <Card.Title>{matricula}</Card.Title>

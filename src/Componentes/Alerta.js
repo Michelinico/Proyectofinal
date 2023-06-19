@@ -6,6 +6,7 @@ const contenedor=document.querySelector("#contenedorAlerta");
 
 const Alerta = ({show,cerrar, MAlerta}) => {
 
+  // Alerta de éxito en agregar el vehículo
   if (MAlerta==="exitoV"){
   return (
     show && cerrar &&
@@ -18,6 +19,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
   );
   }
 
+  // Alerta de fallo en agregar el vehículo
   if (MAlerta==="falloV"){
     return (
       show && cerrar &&
@@ -31,6 +33,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
     );
   }
 
+  // Alerta de confirmacón de modificación de vehículo
   if (MAlerta==="exitoVM"){
     return (
       show && cerrar &&
@@ -43,18 +46,20 @@ const Alerta = ({show,cerrar, MAlerta}) => {
     );
     }
   
-    if (MAlerta==="falloVM"){
-      return (
-        show && cerrar &&
-        ReactDOM.createPortal(
-        <Modal variant="primary" backdrop show={show} onHide={cerrar}>
-          <Alert variant="danger" className="full-width-alert">
-            No se ha podido modificar el vehiculo.
-          </Alert>
-        </Modal>, contenedor)
-      );
-    }
+  // Alerta de fallo al modificar el vehículo
+  if (MAlerta==="falloVM"){
+    return (
+      show && cerrar &&
+      ReactDOM.createPortal(
+      <Modal variant="primary" backdrop show={show} onHide={cerrar}>
+        <Alert variant="danger" className="full-width-alert">
+          No se ha podido modificar el vehiculo.
+        </Alert>
+      </Modal>, contenedor)
+    );
+  }
 
+  // Alerta para el fallo en el registro por no tener las contraseñas iguales
   if (MAlerta==="NoPass"){
     return (
       show && cerrar &&
@@ -67,6 +72,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
     );
   }
 
+  // Alerta para confirmar el registro
   if (MAlerta==="RegOK"){
     return (
       show && cerrar &&
@@ -79,6 +85,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
     );
   }
 
+  // Alerta para confirmar que el cliente se ha agregado
   if (MAlerta==="exitoC"){
     return (
       show && cerrar &&
@@ -91,6 +98,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
     );
   }
 
+  // Alerta del registro para añadir cliente desde admin
   if (MAlerta==="falloC"){
     return (
       show && cerrar &&
@@ -104,6 +112,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
     );
   }
 
+  // Alerta para confirmar la modificación
   if (MAlerta==="exitoCM"){
     return (
       show && cerrar &&
@@ -116,6 +125,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
     );
   }
 
+  // Alerta de que no se ha podido modificar el cliente
   if (MAlerta==="falloCM"){
     return (
       show && cerrar &&
@@ -128,6 +138,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
     );
   }
 
+  // Alerta de confirmación de borrado de cliente
   if (MAlerta==="exitoBC"){
     return (
       show && cerrar &&
@@ -140,6 +151,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
     );
   }
 
+  // Alerta de fallo al borrar cliente
   if (MAlerta==="falloBC"){
     return (
       show && cerrar &&
@@ -152,6 +164,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
     );
   }
 
+  // Alerta de confirmación de borrado del vehículo
   if (MAlerta==="exitoBV"){
     return (
       show && cerrar &&
@@ -164,6 +177,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
     );
   }
 
+  // Alerta de fallo al borrar vehículo
   if (MAlerta==="falloBV"){
     return (
       show && cerrar &&
@@ -176,6 +190,7 @@ const Alerta = ({show,cerrar, MAlerta}) => {
     );
   }
 
+  // Alerta de cierre de sesión
   if (MAlerta==="Cerrar"){
     return (
       show && cerrar &&

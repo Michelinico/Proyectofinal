@@ -25,8 +25,10 @@ export default function Inicio({url,urlImg}) {
 
     useEffect(() => {
         if (tipo === 'Cliente') {
+            // Si al inciar sesión es de tipo cliente, llevará a InicioUsuario
           navigate(process.env.PUBLIC_URL + `/InicioUsuario`);
         } else if (tipo === 'Administrador') {
+            // Si es de tipo administrador, llevará a MenuAdm
           navigate(process.env.PUBLIC_URL + `/MenuAdm`);
         }
       }, [tipo, usuario, nombre, navigate]);

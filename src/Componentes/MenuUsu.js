@@ -11,6 +11,7 @@ import ModalesVehiculos from './ModalesVehiculos';
 
 export default function MenuUsu ({url, urlServImg, setMAlerta, setMostrar}) {
   
+  // Al cargar la página comprueba el usuario
   useEffect(() => {
     const cabecera = {
       method:'POST',
@@ -34,6 +35,7 @@ export default function MenuUsu ({url, urlServImg, setMAlerta, setMostrar}) {
 
   const [cochesUsu, setCochesUsu] = useState([]);
   
+  // Al cargar la página lee los coches del usuario logeado
   useEffect(() => {
     const cabecera = {
       method:'POST',
@@ -50,6 +52,7 @@ export default function MenuUsu ({url, urlServImg, setMAlerta, setMostrar}) {
 
   const [estados, setEstados] = useState([]);
 
+  // Al cargar la página comprueba el estado del vehículo
   useEffect(() => {
       if (url) {
       const cabecera = {
@@ -70,6 +73,7 @@ export default function MenuUsu ({url, urlServImg, setMAlerta, setMostrar}) {
   const [historialD, setHistorial] = useState([]);
   const [matricula, setMatricula] = useState([]);
 
+  // Función para enviar petición sobre el historial
   function historial(matricula) {
     const cabecera = {
       method:'POST',
@@ -89,28 +93,38 @@ export default function MenuUsu ({url, urlServImg, setMAlerta, setMostrar}) {
     historial(matricula);
   }
 
+  // Comprueba que se han obtenido datos en la petición, y también si es cliente
   if ( url !== "" && Object.keys(cochesUsu).length !== 0 && usuario && tipo==="Cliente"){
     const pagar=(estados.filter((estado) => cochesUsu.find((coche) => coche.Matricula === estado.Matricula && coche.DNI === usuario)).reduce((total, estado) => total + parseFloat(estado.Pagar), 0).toFixed(2))
   return ( 
   <>
     <Menu usuario={nombre} tipo={tipo} pagar={pagar} url={url} setMAlerta={setMAlerta} setMostrar={setMostrar}/>
       
+     {/* Acordeón para dibujar los vehículos de los clientes */}
     <Accordion defaultActiveKey='0'>
       {cochesUsu.filter((coche) => coche.DNI === usuario).map((coche, index) => {
       // Buscamos el estado del vehículo en el array 'estados'
       const estadoVehiculo = estados.find((estado) => estado.Matricula === coche.Matricula);
-      let numero = '0'; 
+      let numero = '0';
+      // Si existe índice, comprueba de que sea 0, si es 0 asocia 0 a la variable
+      // Esto se ha hecho así para que el primer elemento del acordeón salga abierto
+      // al entrar a la página
       if (index) {
         numero = 0 === index ?
           '0':
           {index};      
       }
+      // Se guarda la variable estadoTexto, si existe estadoVehiculo, el valor cambia, si no
+      // se mantendrá como se efinió la primera vez
       let estadoTexto = "No ha efectuado ninguna entrada";
       if (estadoVehiculo) {
         estadoTexto = estadoVehiculo.Estado === "Dentro" ? 
           `Dentro - Fecha de entrada: ${estadoVehiculo.UltimaEntrada}` : 
           `Fuera - Fecha de salida: ${estadoVehiculo.UltimaSalida}`;
       }
+
+      // Aquí se obtiene lo que debe de pagar cada vehiculo, si no existe estadoVehiculo
+      // el pago será 0
       const aPagar = estadoVehiculo ? estadoVehiculo.Pagar : 0;
       return(
         <Accordion.Item eventKey={numero} key={index}>
@@ -155,6 +169,7 @@ export default function MenuUsu ({url, urlServImg, setMAlerta, setMostrar}) {
   </>
   
   )
+  // Si no se han encontrado vehículos para ese cliente, se ejecutará lo siguiente
   }else if ( url !== "" && usuario && tipo==="Cliente"){
     return ( 
       <>    

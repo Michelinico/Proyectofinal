@@ -30,15 +30,14 @@ function CartaCliente({DNI,nombre,apellido,telefono,avatar,plaza,url,onLeer,setM
     const abrirCuadro= () => {
         setVisible(true);
       }
-
     const [visible, setVisible] = useState(false);
 
     const abrirPregunta= () => {
         setVisibleP(true);
       }
-
     const [visibleP, setVisibleP] = useState(false);
 
+    // Código para dibujar las cartas de los clientes junto con sus modales
     return (
         <Card className='Carta'>
             <Card.Title>{DNI}</Card.Title>

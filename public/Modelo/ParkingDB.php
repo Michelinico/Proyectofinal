@@ -29,6 +29,7 @@ class ParkingDB {
 
     // USUARIOS //
 
+    # Función para comprobar el usuario
     public function comprueba($usuario) {
 
         $exito=false;
@@ -52,6 +53,7 @@ class ParkingDB {
 
     // VEHICULOS EN GENERAL //
 
+    # Función para comprobar el estado del vehículo(Si se encuentra dentro o fuera)
     public function comprobarEstado() {
         $estados = array();
         $sql="SELECT es1.Matricula,
@@ -81,6 +83,7 @@ class ParkingDB {
 
     // VEHICULOS POR USUARIO //
 
+    # Función para recopilar los vehiculos de un usuario en concreto
     public function cochesUsu($usuario) {
         $coches = array();
         $sql="select * from coches where DNI='$usuario'";
@@ -96,6 +99,7 @@ class ParkingDB {
 
     // VEHICULOS ADMIN //
 
+    # Función para pasar la lectura de todos los vehículos a JSON
     public function leerCochesJSON() {
         $json = array();
         $coches = $this->leerCoches();
@@ -105,6 +109,7 @@ class ParkingDB {
         return json_encode($json);
     }
 
+    # Función para recopilar todos los vehículos del parking
     public function leerCoches() {
         $coches = array();
         $sql="select * from coches";
@@ -118,6 +123,7 @@ class ParkingDB {
         return $coches;
     }
 
+    # Función para seleccionar todos los datos de un vehículo (Consultas)
     public function cocheUsu($matricula) {
         $coches = array();
         $sql="select * from coches where Matricula='$matricula'";
@@ -131,6 +137,7 @@ class ParkingDB {
         return $coches;     
     }
 
+    # Función para obtener el historial del vehículo
     public function historial($matricula) {
         $historial = array();
         $sql="SELECT Entrada,Salida FROM `entrada-salidas` WHERE Matricula='$matricula'";
@@ -144,6 +151,7 @@ class ParkingDB {
         return $historial;     
     }
 
+    # Función para obtener las plazas ocupadas
     public function plazasDisponibles() {
         $plazas = array();
         $sql="select Plaza from coches";
@@ -154,6 +162,7 @@ class ParkingDB {
         return $plazas;
     }
 
+    # Función para guardar los vehículos en la base de datos
     public function guardarVehiculo($datosF){
         $Matricula=$datosF['Matricula'];
         $DNI=$datosF['DNI'];
@@ -170,6 +179,7 @@ class ParkingDB {
         return $exito;
     }
 
+    # Función para modificar el vehículo específico
     public function modVehiculo($datosF){
         $Matricula=$datosF['Matricula'];
         $Color=$datosF['Color'];
@@ -184,6 +194,7 @@ class ParkingDB {
         return $exito;
     }
 
+    # Función para borrar un vehículo
     public function borrarVehiculo($matricula){
         $sql="delete from coches where Matricula='$matricula'";
         $exito=$this->conexion->query($sql);
@@ -193,6 +204,7 @@ class ParkingDB {
 
     // CLIENTES ADMIN //
 
+    # Función para pasar la lectura de todos los clientes a JSON
     public function leerClientesJSON() {
         $json = array();
         $clientes = $this->leerClientes();
@@ -202,6 +214,7 @@ class ParkingDB {
         return json_encode($json);
     }
 
+    # Función para recopilar todos los clientes del parking
     public function leerClientes() {
         $clientes = array();
         $sql="SELECT u.*, IFNULL(GROUP_CONCAT(c.Plaza), 'NA') AS Plazas 
@@ -218,6 +231,7 @@ class ParkingDB {
         return $clientes;
     }
 
+    # Función para guardar los clientes en la base de datos
     public function guardarCliente($datosF){
         $DNI=$datosF['DNI'];
         $Nombre=$datosF['Nombre'];
@@ -232,6 +246,7 @@ class ParkingDB {
         return $exito;
     }
 
+    # Función para modificar los clientes
     public function modCliente($datosF){
         $DNI=$datosF['DNI'];
         $Contrasena=$datosF['Contrasena'];
@@ -248,6 +263,7 @@ class ParkingDB {
         return $exito;
     }
 
+    # Función para borrar los clientes
     public function borrarCliente($DNI){
         $sql="delete from usuarios where DNI='$DNI'";
         $exito=$this->conexion->query($sql);
@@ -256,6 +272,7 @@ class ParkingDB {
 
     // ENTRADA SALIDA PARKING //
 
+    # Función para comprobar la entrada al parking
     public function entrada($matricula) {
         $sql="SELECT * FROM coches WHERE Matricula='$matricula'";
         $respuesta=$this->conexion->query($sql);
@@ -277,6 +294,7 @@ class ParkingDB {
         return $exito;     
     }
 
+    # Función para comprobar la salida del parking
     public function salida($matricula) {
         $sql="SELECT * FROM coches WHERE Matricula='$matricula'";
         $respuesta=$this->conexion->query($sql);

@@ -7,6 +7,7 @@ const contenedor=document.querySelector("#contenedorConsulta");
 
 const Consultas = ( {titulo, visible, datos, cerrar, usuario, tamano, estados,urlServImg}) => {
     
+  // Código para realizar la comprobación de la consulta de matrícula
   if (titulo==="Comprobar matrícula"){
     return(
         visible && 

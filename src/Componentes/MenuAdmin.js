@@ -14,6 +14,7 @@ export default function MenuAdmin ({url, urlServImg ,setMAlerta, setMostrar}) {
 
   const navigate = useNavigate();
 
+  // Al cargar la página comprueba el usuario
   useEffect(() => {
     const cabecera = {
       method:'POST',
@@ -115,6 +116,7 @@ export default function MenuAdmin ({url, urlServImg ,setMAlerta, setMostrar}) {
       }
     }, [url]);
 
+  // Esta parte del código, solo se ejecutará si es un administrador
   if ( url !== "" && usuario && tipo==="Administrador"){
     return ( 
     <>
@@ -178,7 +180,7 @@ export default function MenuAdmin ({url, urlServImg ,setMAlerta, setMostrar}) {
   }else if (url !== "" && usuario && tipo==="Cliente"){
     return (
       <>
-        <Alert className="text-center h4" key="danger" variant="danger">Zona restringida pinche pendejo</Alert>
+        <Alert className="text-center h4" key="danger" variant="danger">Zona restringida</Alert>
       </>
     )
     

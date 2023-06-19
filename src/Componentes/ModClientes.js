@@ -11,6 +11,7 @@ import Menu from './Navbar';
 
 function ModClientes({url,urlImg,urlServImg, MACerrar, setMostrarCerrar}) {
 
+  // Al cargar la página comprueba el usuario
   useEffect(() => {
     const cabecera = {
       method:'POST',
@@ -35,13 +36,11 @@ function ModClientes({url,urlImg,urlServImg, MACerrar, setMostrarCerrar}) {
     }
     
     const [visible, setVisible] = useState(false);
-
     const [datosClientes, setClientes] = useState([]);
-
     const [MAlerta, setMAlerta] = useState([]);
-
     const [mostrar, setMostrar] = useState(false);
 
+    // Función para leer los clientes al añadir,modificar o borrar
     function leerClientes() {
       const cabecera = {
         method:'POST',
@@ -56,6 +55,7 @@ function ModClientes({url,urlImg,urlServImg, MACerrar, setMostrarCerrar}) {
         });
     };
 
+    // Al cargar la página lee todos los usuarios
     useEffect(() => {
       if (url) {
       const cabecera = {
@@ -72,6 +72,7 @@ function ModClientes({url,urlImg,urlServImg, MACerrar, setMostrarCerrar}) {
       }
     }, [url]);
 
+    // Si es tipo administrador, se ejecutará este código
     if ( url !== "" && usuario && tipo==="Administrador"){
         return (
         <div className='Clientes'>
@@ -94,6 +95,8 @@ function ModClientes({url,urlImg,urlServImg, MACerrar, setMostrarCerrar}) {
                 cerrar={() => {setVisible(false)}}
             />
             <CardGroup id='TarjetasClientes'>
+                {/* Se recorre un array para dibujar todas las tarjetas de los clientes.
+                    Estas se dibujarán en grupos de 3 en 3 */}
                 {datosClientes.map((datClientes, index) => {
                     return index % 3 === 0 ? (
                         <Row key={index}>

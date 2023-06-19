@@ -46,6 +46,7 @@ export default function Login ({onIdentificar,onTipo,onNombre,url,urlImg}) {
   const [MAlerta, setMAlerta] = useState([]);
   const [mostrar, setMostrar] = useState(false);
 
+  // Código donde se dibuja la ventana del login
   return (   
   <div className="contenedorLogin">
     <Alerta show={mostrar} 
