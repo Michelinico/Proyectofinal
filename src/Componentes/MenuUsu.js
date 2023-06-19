@@ -2,10 +2,12 @@ import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 import { useState, useEffect } from 'react';
 
 import Menu from './Navbar';
+import ModalesVehiculos from './ModalesVehiculos';
 
 export default function MenuUsu ({url, urlServImg, setMAlerta, setMostrar}) {
   
@@ -64,6 +66,29 @@ export default function MenuUsu ({url, urlServImg, setMAlerta, setMostrar}) {
     }
   }, [url]);
 
+  const [visibleHis, setVisibleHis] = useState(false);
+  const [historialD, setHistorial] = useState([]);
+  const [matricula, setMatricula] = useState([]);
+
+  function historial(matricula) {
+    const cabecera = {
+      method:'POST',
+      headers: { 'Content-Type': 'application/json'},             
+      body: JSON.stringify({ accion:'leerhistorial', matricula: matricula})
+    };
+
+    fetch(url, cabecera)
+    .then(response => response.json())
+    .then(datos => {
+        setHistorial(datos);          
+    });
+  };
+
+  function abrirHistorial(matricula){
+    setVisibleHis(true);
+    historial(matricula);
+  }
+
   if ( url !== "" && Object.keys(cochesUsu).length !== 0 && usuario && tipo==="Cliente"){
     const pagar=(estados.filter((estado) => cochesUsu.find((coche) => coche.Matricula === estado.Matricula && coche.DNI === usuario)).reduce((total, estado) => total + parseFloat(estado.Pagar), 0).toFixed(2))
   return ( 
@@ -89,7 +114,7 @@ export default function MenuUsu ({url, urlServImg, setMAlerta, setMostrar}) {
       const aPagar = estadoVehiculo ? estadoVehiculo.Pagar : 0;
       return(
         <Accordion.Item eventKey={numero} key={index}>
-          <Accordion.Header>{coche.Matricula}</Accordion.Header>
+          <Accordion.Header>{coche.Matricula}</Accordion.Header> 
           <Accordion.Body>
           <div className="InfoVeh">
             <Row>
@@ -104,6 +129,17 @@ export default function MenuUsu ({url, urlServImg, setMAlerta, setMostrar}) {
                   <p><b>Color:</b> {coche.Color}</p>
                   <p><b>Plaza:</b> {coche.Plaza}</p>
                 </div>
+                <Button id={coche.Matricula} variant="primary" 
+                  onClick={() => {abrirHistorial(coche.Matricula) 
+                  setMatricula(coche.Matricula)}}>Historial</Button>
+                <ModalesVehiculos
+                  url={url} 
+                  matricula={matricula}
+                  historialD={historialD}
+                  titulo="Historial"
+                  visible={visibleHis}
+                  cerrar={() => {setVisibleHis(false)}}
+                />
               </Col>
             </Row>
             <Row>
